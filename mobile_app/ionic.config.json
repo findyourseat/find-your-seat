@@ -1,0 +1,9 @@
+{
+  "name": "find-your-seat",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular",
+  "id": "cffa001c"
+}

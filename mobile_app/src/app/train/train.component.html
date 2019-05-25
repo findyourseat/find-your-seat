@@ -1,0 +1,762 @@
+<ion-header class='header' *ngIf='train'>
+    <ion-toolbar class='title'>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>
+            {{train.id}}
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<!-- DEMO -->
+<ion-content *ngIf='train && demo' [scrollEvents]="true" class='content'>
+    <ion-card>
+        <ion-card-header>
+            <ion-item class="first" lines="none" >
+                <ion-card-subtitle>Wagon 1</ion-card-subtitle>
+                <ion-card-subtitle slot="end">{{temp}}°C</ion-card-subtitle>
+            </ion-item>
+        </ion-card-header>
+        <ion-card-content>
+            <ion-grid>
+                <ion-row align-items-center style="height: 200px">
+                    <ion-col>
+                        <ion-img src="../assets/img/free_up.png"></ion-img>
+                    </ion-col>
+                    <ion-col >
+                        <ion-img *ngIf='seat1.free == 1 || !seats' src="../assets/img/free_up.png"></ion-img>
+						<ion-img *ngIf='seat1.free == 0' src="../assets/img/occ_up.png"></ion-img>
+                    </ion-col>
+                    <ion-col>
+                        <ion-img *ngIf='seat2.free == 1 || !seats' src="../assets/img/free_up.png"></ion-img>
+                        <ion-img *ngIf='seat2.free == 0' src="../assets/img/occ_up.png"></ion-img>
+                    </ion-col>
+                    <ion-col>
+                        <ion-img src="../assets/img/free_up.png"></ion-img>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-card-content>
+    </ion-card>
+</ion-content>
+
+<!-- ONE FLOOR -->
+<ion-content *ngIf='train && oneFloor' [scrollEvents]="true" class='content'>
+
+    <ion-card>
+        <ion-card-content>
+            <ion-item id="first" lines="none" >
+                <ion-card-subtitle>Wagon 1</ion-card-subtitle>
+                <ion-card-subtitle slot="end">25 °C</ion-card-subtitle>
+            </ion-item>
+            <ion-grid class="corridor">
+                <ion-row >
+                    <ion-col class="seat">
+                        <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                    </ion-col>
+                    <ion-col class="seat">
+                        <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                    </ion-col>
+                    <ion-col>
+
+                    </ion-col>
+                    <ion-col class="seat">
+                        <ion-img src="../assets/img/occ_bottom.png"></ion-img>
+                    </ion-col>
+                    <ion-col class="seat">
+                        <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col class="seat">
+                        <ion-img src="../assets/img/free_up.png"></ion-img>
+                        <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                    </ion-col>
+                    <ion-col class="seat">
+                        <ion-img src="../assets/img/free_up.png"></ion-img>
+                        <ion-img src="../assets/img/occ_bottom.png"></ion-img>
+                    </ion-col>
+                    <ion-col>
+                        <ion-img class="arrow" src="../assets/img/desk.jpg"></ion-img>
+                    </ion-col>
+                    <ion-col class="seat" >
+                        <ion-img src="../assets/img/free_up.png"></ion-img>
+                        <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                    </ion-col>
+                    <ion-col class="seat">
+                        <ion-img src="../assets/img/occ_up.png"></ion-img>
+                        <ion-img src="../assets/img/occ_bottom.png"></ion-img>
+                    </ion-col>
+                </ion-row>
+                <ion-row >
+                    <ion-col class="seat">
+                        <ion-img src="../assets/img/free_up.png"></ion-img>
+                        <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                    </ion-col>
+                    <ion-col class="seat">
+                        <ion-img src="../assets/img/free_up.png"></ion-img>
+                        <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                    </ion-col>
+                    <ion-col>
+                        <ion-img class="arrow" src="../assets/img/desk.jpg"></ion-img>
+                    </ion-col>
+                    <ion-col  class="seat">
+                        <ion-img src="../assets/img/free_up.png"></ion-img>
+                        <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                    </ion-col>
+                    <ion-col class="seat">
+                        <ion-img src="../assets/img/free_up.png"></ion-img>
+                        <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                    </ion-col>
+                </ion-row >
+                <ion-row >
+                    <ion-col class="seat">
+                        <ion-img src="../assets/img/occ_up.png"></ion-img>
+                        <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                    </ion-col>
+                    <ion-col class="seat">
+                        <ion-img src="../assets/img/free_up.png"></ion-img>
+                        <ion-img src="../assets/img/occ_bottom.png"></ion-img>
+                    </ion-col>
+                    <ion-col>
+                        <ion-img class="arrow" src="../assets/img/desk.jpg"></ion-img>
+                    </ion-col>
+                    <ion-col class="seat">
+                        <ion-img src="../assets/img/occ_up.png" ></ion-img>
+                        <ion-img src="../assets/img/occ_bottom.png" ></ion-img>
+                    </ion-col>
+                    <ion-col class="seat">
+                        <ion-img src="../assets/img/occ_up.png" ></ion-img>
+                        <ion-img src="../assets/img/occ_bottom.png"></ion-img>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+            <ion-item lines="none">
+                <ion-card-subtitle>Wagon 2</ion-card-subtitle>
+                <ion-card-subtitle slot="end">28 °C</ion-card-subtitle>
+            </ion-item>
+            <ion-grid class="corridor">
+                <ion-row >
+                    <ion-col class="seat">
+                        <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                    </ion-col>
+                    <ion-col class="seat">
+                        <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                    </ion-col>
+                    <ion-col>
+
+                    </ion-col>
+                    <ion-col class="seat">
+                        <ion-img src="../assets/img/occ_bottom.png"></ion-img>
+                    </ion-col>
+                    <ion-col class="seat">
+                        <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col class="seat">
+                        <ion-img src="../assets/img/free_up.png"></ion-img>
+                        <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                    </ion-col>
+                    <ion-col class="seat">
+                        <ion-img src="../assets/img/free_up.png"></ion-img>
+                        <ion-img src="../assets/img/occ_bottom.png"></ion-img>
+                    </ion-col>
+                    <ion-col>
+                        <ion-img class="arrow" src="../assets/img/desk.jpg"></ion-img>
+                    </ion-col>
+                    <ion-col class="seat" >
+                        <ion-img src="../assets/img/free_up.png"></ion-img>
+                        <ion-img src="../assets/img/occ_bottom.png"></ion-img>
+                    </ion-col>
+                    <ion-col class="seat">
+                        <ion-img src="../assets/img/occ_up.png"></ion-img>
+                        <ion-img src="../assets/img/occ_bottom.png"></ion-img>
+                    </ion-col>
+                </ion-row>
+                <ion-row >
+                    <ion-col class="seat">
+                        <ion-img src="../assets/img/free_up.png"></ion-img>
+                        <ion-img src="../assets/img/occ_bottom.png"></ion-img>
+                    </ion-col>
+                    <ion-col class="seat">
+                        <ion-img src="../assets/img/free_up.png"></ion-img>
+                        <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                    </ion-col>
+                    <ion-col>
+                        <ion-img class="arrow" src="../assets/img/desk.jpg"></ion-img>
+                    </ion-col>
+                    <ion-col  class="seat">
+                        <ion-img src="../assets/img/occ_up.png"></ion-img>
+                        <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                    </ion-col>
+                    <ion-col class="seat">
+                        <ion-img src="../assets/img/free_up.png"></ion-img>
+                        <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                    </ion-col>
+                </ion-row >
+                <ion-row >
+                    <ion-col class="seat">
+                        <ion-img src="../assets/img/occ_up.png"></ion-img>
+                        <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                    </ion-col>
+                    <ion-col class="seat">
+                        <ion-img src="../assets/img/free_up.png"></ion-img>
+                        <ion-img src="../assets/img/occ_bottom.png"></ion-img>
+                    </ion-col>
+                    <ion-col>
+                        <ion-img class="arrow" src="../assets/img/desk.jpg"></ion-img>
+                    </ion-col>
+                    <ion-col class="seat">
+                        <ion-img src="../assets/img/occ_up.png" ></ion-img>
+                        <ion-img src="../assets/img/occ_bottom.png" ></ion-img>
+                    </ion-col>
+                    <ion-col class="seat">
+                        <ion-img src="../assets/img/free_up.png" ></ion-img>
+                        <ion-img src="../assets/img/occ_bottom.png"></ion-img>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+            <ion-item lines="none">
+                <ion-card-subtitle>Wagon 3</ion-card-subtitle>
+                <ion-card-subtitle slot="end">23 °C</ion-card-subtitle>
+            </ion-item>
+            <ion-grid class="corridor">
+                <ion-row >
+                    <ion-col class="seat">
+                        <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                    </ion-col>
+                    <ion-col class="seat">
+                        <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                    </ion-col>
+                    <ion-col>
+
+                    </ion-col>
+                    <ion-col class="seat">
+                        <ion-img src="../assets/img/occ_bottom.png"></ion-img>
+                    </ion-col>
+                    <ion-col class="seat">
+                        <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col class="seat">
+                        <ion-img src="../assets/img/free_up.png"></ion-img>
+                        <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                    </ion-col>
+                    <ion-col class="seat">
+                        <ion-img src="../assets/img/free_up.png"></ion-img>
+                        <ion-img src="../assets/img/occ_bottom.png"></ion-img>
+                    </ion-col>
+                    <ion-col>
+                        <ion-img class="arrow" src="../assets/img/desk.jpg"></ion-img>
+                    </ion-col>
+                    <ion-col class="seat" >
+                        <ion-img src="../assets/img/free_up.png"></ion-img>
+                        <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                    </ion-col>
+                    <ion-col class="seat">
+                        <ion-img src="../assets/img/free_up.png"></ion-img>
+                        <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                    </ion-col>
+                </ion-row>
+                <ion-row >
+                    <ion-col class="seat">
+                        <ion-img src="../assets/img/free_up.png"></ion-img>
+                        <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                    </ion-col>
+                    <ion-col class="seat">
+                        <ion-img src="../assets/img/free_up.png"></ion-img>
+                        <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                    </ion-col>
+                    <ion-col>
+                        <ion-img class="arrow" src="../assets/img/desk.jpg"></ion-img>
+                    </ion-col>
+                    <ion-col  class="seat">
+                        <ion-img src="../assets/img/free_up.png"></ion-img>
+                        <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                    </ion-col>
+                    <ion-col class="seat">
+                        <ion-img src="../assets/img/free_up.png"></ion-img>
+                        <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                    </ion-col>
+                </ion-row >
+                <ion-row >
+                    <ion-col class="seat">
+                        <ion-img src="../assets/img/free_up.png"></ion-img>
+                        <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                    </ion-col>
+                    <ion-col class="seat">
+                        <ion-img src="../assets/img/free_up.png"></ion-img>
+                        <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                    </ion-col>
+                    <ion-col>
+                        <ion-img class="arrow" src="../assets/img/desk.jpg"></ion-img>
+                    </ion-col>
+                    <ion-col class="seat">
+                        <ion-img src="../assets/img/free_up.png" ></ion-img>
+                        <ion-img src="../assets/img/free_bottom.png" ></ion-img>
+                    </ion-col>
+                    <ion-col class="seat">
+                        <ion-img src="../assets/img/free_up.png" ></ion-img>
+                        <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-card-content>
+    </ion-card>
+</ion-content>
+
+<!-- TWO FLOOR -->
+<ion-content *ngIf='train && twoFloor' [scrollEvents]="true" class='content'>
+
+    <!-- Default Segment -->
+    <ion-segment (ionChange)="segmentChanged($event)" scrollable="true">
+        <ion-segment-button value="all" checked>
+            <ion-label>All</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="1">
+            <ion-label>1° Floor</ion-label>
+        </ion-segment-button>
+
+        <ion-segment-button value="2">
+            <ion-label>2° Floor</ion-label>
+        </ion-segment-button>
+    </ion-segment>
+
+    <ion-card>
+        <ion-card-content >
+            <div *ngIf='segmentValue == "1" || segmentValue == "all"'>
+                    <ion-item lines="none">
+                        <ion-card-subtitle>Wagon 1 - 1° floor </ion-card-subtitle>
+                        <ion-card-subtitle slot="end">23 °C</ion-card-subtitle>
+                    </ion-item>
+                <ion-grid class="corridor">
+                    <ion-row align-items-center>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/occ_bottom.png"></ion-img>
+                        </ion-col>
+                        <ion-col>
+
+                        </ion-col>
+                        <ion-col>
+
+                        </ion-col>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                        </ion-col >
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row align-items-center>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                        </ion-col>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/occ_bottom.png"></ion-img>
+                        </ion-col>
+                        <ion-col>
+
+                        </ion-col>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                        </ion-col>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row align-items-center>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_up.png"></ion-img>
+                            <ion-img src="../assets/img/free_up.png"></ion-img>
+                        </ion-col>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/occ_up.png"></ion-img>
+                            <ion-img src="../assets/img/occ_up.png"></ion-img>
+                        </ion-col>
+                        <ion-col>
+                            <ion-img class="arrow" src="../assets/img/desk.jpg"></ion-img>
+                        </ion-col>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/occ_bottom.png"></ion-img>
+                            <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                        </ion-col>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                            <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row align-items-center>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_up.png"></ion-img>
+                            <ion-img src="../assets/img/free_up.png"></ion-img>
+                        </ion-col>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_up.png"></ion-img>
+                            <ion-img src="../assets/img/free_up.png"></ion-img>
+                        </ion-col>
+                        <ion-col>
+                            <ion-img class="arrow" src="../assets/img/desk.jpg"></ion-img>
+                        </ion-col>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                            <ion-img src="../assets/img/occ_bottom.png"></ion-img>
+                        </ion-col>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                            <ion-img src="../assets/img/occ_bottom.png"></ion-img>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row align-items-center>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_up.png"></ion-img>
+                            <ion-img src="../assets/img/occ_up.png"></ion-img>
+                        </ion-col>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_up.png"></ion-img>
+                            <ion-img src="../assets/img/free_up.png"></ion-img>
+                        </ion-col>
+                        <ion-col>
+                            <ion-img class="arrow" src="../assets/img/desk.jpg"></ion-img>
+                        </ion-col>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                            <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                        </ion-col>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                            <ion-img src="../assets/img/occ_bottom.png"></ion-img>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row align-items-center>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_up.png"></ion-img>
+                        </ion-col>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                        </ion-col>
+                        <ion-col>
+
+                        </ion-col>
+                        <ion-col >
+
+                        </ion-col>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </div>
+            <div *ngIf='segmentValue == "2" || segmentValue == "all"'>
+                    <ion-item lines="none">
+                        <ion-card-subtitle>Wagon 1 - 2° floor </ion-card-subtitle>
+                        <ion-card-subtitle slot="end">25 °C</ion-card-subtitle>
+                    </ion-item>
+                <ion-grid class="corridor">
+                    <ion-row align-items-center>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                        </ion-col>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/occ_bottom.png"></ion-img>
+                        </ion-col>
+                        <ion-col>
+
+                        </ion-col>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                        </ion-col >
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row align-items-center>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_up.png"></ion-img>
+                            <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                        </ion-col>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_up.png"></ion-img>
+                            <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                        </ion-col>
+                        <ion-col>
+                            <ion-img class="arrow" src="../assets/img/desk.jpg"></ion-img>
+                        </ion-col>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_up.png"></ion-img>
+                            <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                        </ion-col>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_up.png"></ion-img>
+                            <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row align-items-center>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/occ_up.png"></ion-img>
+                            <ion-img src="../assets/img/occ_bottom.png"></ion-img>
+                        </ion-col>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_up.png"></ion-img>
+                            <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                        </ion-col>
+                        <ion-col >
+                            <ion-img class="arrow" src="../assets/img/desk.jpg"></ion-img>
+                        </ion-col>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_up.png"></ion-img>
+                            <ion-img src="../assets/img/occ_bottom.png"></ion-img>
+                        </ion-col>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_up.png"></ion-img>
+                            <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                        </ion-col>
+                    </ion-row >
+                    <ion-row align-items-center>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_up.png"></ion-img>
+                            <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                        </ion-col>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_up.png"></ion-img>
+                            <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                        </ion-col>
+                        <ion-col>
+                            <ion-img class="arrow" src="../assets/img/desk.jpg"></ion-img>
+                        </ion-col>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_up.png" ></ion-img>
+                            <ion-img src="../assets/img/free_bottom.png" ></ion-img>
+                        </ion-col>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/occ_up.png" ></ion-img>
+                            <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </div>
+
+        </ion-card-content>
+    </ion-card>
+    <ion-card>
+        <ion-card-content>
+            <div *ngIf='segmentValue == "1" || segmentValue == "all"'>
+                <ion-item lines="none">
+                    <ion-card-subtitle>Wagon 2 - 1° floor </ion-card-subtitle>
+                    <ion-card-subtitle slot="end">26 °C</ion-card-subtitle>
+                </ion-item>
+                <ion-grid class ="corridor">
+                    <ion-row align-items-center>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                        </ion-col>
+                        <ion-col>
+
+                        </ion-col>
+                        <ion-col>
+
+                        </ion-col>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                        </ion-col>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row align-items-center>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                        </ion-col>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                        </ion-col>
+                        <ion-col >
+                        </ion-col>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                        </ion-col>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row align-items-center>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/occ_up.png"></ion-img>
+                            <ion-img src="../assets/img/free_up.png"></ion-img>
+                        </ion-col>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_up.png"></ion-img>
+                            <ion-img src="../assets/img/free_up.png"></ion-img>
+                        </ion-col>
+                        <ion-col>
+                            <ion-img class="arrow" src="../assets/img/desk.jpg"></ion-img>
+                        </ion-col>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                            <ion-img src="../assets/img/occ_bottom.png"></ion-img>
+                        </ion-col>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                            <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row align-items-center>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_up.png"></ion-img>
+                            <ion-img src="../assets/img/free_up.png"></ion-img>
+                        </ion-col>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_up.png"></ion-img>
+                            <ion-img src="../assets/img/free_up.png"></ion-img>
+                        </ion-col>
+                        <ion-col>
+                            <ion-img class="arrow" src="../assets/img/desk.jpg"></ion-img>
+                        </ion-col>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/occ_bottom.png"></ion-img>
+                            <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                        </ion-col>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                            <ion-img src="../assets/img/occ_bottom.png"></ion-img>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row align-items-center>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_up.png"></ion-img>
+                            <ion-img src="../assets/img/free_up.png"></ion-img>
+                        </ion-col>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_up.png"></ion-img>
+                            <ion-img src="../assets/img/free_up.png"></ion-img>
+                        </ion-col>
+                        <ion-col>
+                            <ion-img class="arrow" src="../assets/img/desk.jpg"></ion-img>
+                        </ion-col>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                            <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                        </ion-col>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                            <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row align-items-center>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/occ_up.png"></ion-img>
+                        </ion-col>
+                        <ion-col>
+
+                        </ion-col>
+                        <ion-col>
+
+                        </ion-col>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                        </ion-col>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </div>
+            <div *ngIf='segmentValue == "2" || segmentValue == "all"'>
+                <ion-item lines="none">
+                    <ion-card-subtitle>Wagon 2 - 2° floor </ion-card-subtitle>
+                    <ion-card-subtitle slot="end">21 °C</ion-card-subtitle>
+                </ion-item>
+                <ion-grid class=" corridor">
+                    <ion-row align-items-center>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                        </ion-col>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                        </ion-col>
+                        <ion-col>
+
+                        </ion-col>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                        </ion-col>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row align-items-center>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_up.png"></ion-img>
+                            <ion-img src="../assets/img/occ_bottom.png"></ion-img>
+                        </ion-col>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_up.png"></ion-img>
+                            <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                        </ion-col>
+                        <ion-col>
+                            <ion-img class="arrow" src="../assets/img/desk.jpg"></ion-img>
+                        </ion-col>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_up.png"></ion-img>
+                            <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                        </ion-col>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_up.png"></ion-img>
+                            <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row align-items-center>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_up.png"></ion-img>
+                            <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                        </ion-col>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_up.png"></ion-img>
+                            <ion-img src="../assets/img/occ_bottom.png"></ion-img>
+                        </ion-col>
+                        <ion-col>
+                            <ion-img class="arrow" src="../assets/img/desk.jpg"></ion-img>
+                        </ion-col>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_up.png"></ion-img>
+                            <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                        </ion-col>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_up.png"></ion-img>
+                            <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                        </ion-col>
+                    </ion-row >
+                    <ion-row align-items-center>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_up.png"></ion-img>
+                            <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                        </ion-col>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_up.png"></ion-img>
+                            <ion-img src="../assets/img/occ_bottom.png"></ion-img>
+                        </ion-col>
+                        <ion-col>
+                            <ion-img class="arrow" src="../assets/img/desk.jpg"></ion-img>
+                        </ion-col>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_up.png" ></ion-img>
+                            <ion-img src="../assets/img/free_bottom.png" ></ion-img>
+                        </ion-col>
+                        <ion-col class="seat">
+                            <ion-img src="../assets/img/free_up.png" ></ion-img>
+                            <ion-img src="../assets/img/free_bottom.png"></ion-img>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </div>
+        </ion-card-content>
+    </ion-card>
+	
+</ion-content>
+
+
+<script type="text/javascript">
+    setTimeout(function () { location.reload(true); }, 3000);
+</script>

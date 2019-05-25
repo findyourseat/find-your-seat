@@ -1,0 +1,31 @@
+<ion-header class='header'>
+	<ion-toolbar class='title'>
+    	<ion-title>
+      		Find Your Seat
+    	</ion-title>
+  	</ion-toolbar>
+</ion-header>
+
+<ion-toolbar class='search-box'>
+	<ion-searchbar #searchBox placeholder="Train ID" animated showCancelButton 
+					cancelButtonText="Cancel" debounce="500"	
+						(ionChange)='search(searchBox.value)'
+						(ionCancel)='cancelSearch()'>
+						</ion-searchbar>
+</ion-toolbar>
+
+<ion-content [scrollEvents]="true" class='content' >
+	<ion-list *ngIf='condition'>
+		<ion-item *ngFor='let train of trains' lines="none" routerLink="/train/{{train.id}}">
+				<ion-icon name="train"></ion-icon>
+				<ion-label>{{ train.id }}</ion-label>
+		</ion-item>
+	</ion-list>
+	
+	<ion-list *ngIf='!condition'>
+			<ion-item *ngFor='let train of searchRes' lines="none" routerLink='/train/{{train.id}}'>
+					<ion-icon name="train"></ion-icon>
+					<ion-label>{{ train.id }}</ion-label>
+			</ion-item>
+	</ion-list>
+</ion-content>

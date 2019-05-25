@@ -1,0 +1,7 @@
+{
+  "appId": "com.example.findyourseat",
+  "appName": "FindYourSeat",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www"
+}
