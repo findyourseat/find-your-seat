@@ -1,4 +1,4 @@
-# Activity Recognition
+# Find Your Seat
 This is the official documentation page of Find Your Seat project.
 
 ## Who we are
