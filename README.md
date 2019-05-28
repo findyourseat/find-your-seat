@@ -19,7 +19,7 @@ The project is divides in two main parts:
 ## How to use
 To use this code you need to make some preliminaries steps.
 
-First follow the steps to configure The Things Network application and device on our [Hackster blog post] (https://www.hackster.io/andreanapoletani/find-your-seat-on-the-regional-train-using-your-app-525f37) (Section 2.1).
+First follow the steps to configure The Things Network application and device on our [Hackster blog post](https://www.hackster.io/andreanapoletani/find-your-seat-on-the-regional-train-using-your-app-525f37) (Section 2.1).
 
 Then in each folder, mobile_app and mbed_sketch, we explain separately the steps that you need to make.
 
