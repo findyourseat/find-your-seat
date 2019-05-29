@@ -65,12 +65,11 @@ export class TrainComponent implements OnInit {
     }
 
 
-    async getSeats() {
-        // this.trainService.getSeats();//.map(seat => this.seats = seat);
-		
-    	const url = 'https://28282828.data.thethingsnetwork.org/api/v2/query/02';
+    async getSeats() {		
+    	const url = 'your-data-storage-url';
+	    const headers = { 'Accept':'application/json','Authorization':'ttn-application-access-key'};
 	    const params = {};
-	    const headers = { 'Accept':'application/json','Authorization':'ttn application access key'};
+	    
 
 	    await this.http.get(url, params, headers).
 			then(response => this.response = JSON.parse(response.data)).catch(err => this.seats = err);
