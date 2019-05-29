@@ -27,6 +27,21 @@ npm i
 ```
 Now you shuold see a new directory called node_modules.
 
+## Add the key
+
+If you didn't create the application on [The Things Network](https://www.thethingsnetwork.org), follow the steps described in the [Hackster Blog Post](https://www.hackster.io/andreanapoletani/find-your-seat-on-the-regional-train-using-your-app-525f37) (Section 2.1).
+
+Now, take the Application Access Key (you can find it on the bottom of the overview page of your application) and the URL of the Data Storage integration. To retrieve the second one go to the 'Integration' page on your TTN app, select the Data Storage app and click on 'go to platform'. Cluck on one of the 3 APIs available and then click 'Try it out!', now you should see a field called 'requested URL'.
+
+Open the file *mobile_app/src/app/train/train.component.ts* and find the method **getSeats()**.
+You need to modify the first two variable initialized on this method:
+```
+const url = 'your-data-storage-url';
+const headers = { 'Accept':'application/json','Authorization':'ttn-application-access-key'};
+```
+Instead of *your-data-storage-url* insert your Data Storage URL, and instead of *ttn-application-access-key* the Application Access key (ex: ttn-account-v2.<alphanumeric-sequence>).
+
+
 ### Run the app
 
 To run the application on your localhost type the command:
